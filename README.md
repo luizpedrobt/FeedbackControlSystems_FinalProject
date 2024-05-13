@@ -35,4 +35,10 @@ Both the heating and cooling systems are controlled by the MCU using a BJT (bipo
 
 For system equation formulation, we ran the heater at maximum power while keeping the cooler off to determine the upper heating limit of the plant. Then, upon reaching steady-state maximum accommodation, we activated the cooler at maximum to determine the lower heating limit of the plant. Using MATLAB, we determined the plant transfer function G(s), enabling us to design a suitable PID controller to meet all desired requirements.
 
+<div align="center">
+  <img src="https://github.com/luizpedrobt/FeedbackControlSystems_FinalProject/blob/main/images/planta.png" width="500">
+</div>
+
+The equation of the system in Laplace's domain if $ G(s) = -0.17/(74s + 1) $
+
 In conclusion, the project is perfectly working with the arduino, but it'll be implemented in the STM32 lately, star this repository if you don't want do lose any updates!😘
