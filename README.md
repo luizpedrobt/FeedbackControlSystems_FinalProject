@@ -1,4 +1,4 @@
-This project was developed as part of the Feedback Control Systems Lab course during my undergraduate studies. It was a collaborative effort, carried out in pairs, with the objective of designing a digital PID controller to regulate temperature within a controlled environment.
+This project was developed as part of the Feedback Control Systems Lab course during my undergraduate studies. It was a collaborative effort, carried out in pairs (@github/fcarvalhop), with the objective of designing a digital PID controller to regulate temperature within a controlled environment.
 
 The project entailed designing a PCB to integrate all the necessary circuits, which was accomplished using KiCad 7.0 software.
 
