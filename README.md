@@ -1,5 +1,7 @@
 This project was developed as part of the Feedback Control Systems Lab course during my undergraduate studies. It was a collaborative effort, carried out in pairs (@github/fcarvalhop), with the objective of designing a digital PID controller to regulate temperature within a controlled environment.
 
+<img src="https://github.com/luizpedrobt/FeedbackControlSystems_FinalProject/blob/main/images/8ec62bac-992b-421e-b064-076684428e57.jpeg" width=500>
+
 The project entailed designing a PCB to integrate all the necessary circuits, which was accomplished using KiCad 7.0 software.
 
 The core concept of the project was to utilize a diode as a temperature sensor. To achieve this, the diode was biased with a constant current source, allowing it to vary its voltage linearly in response to changes in ambient temperature. An analog-to-digital converter was then employed to sample the diode's voltage, with the sampled signal undergoing conditioning and filtering for accurate measurement.
