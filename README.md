@@ -39,6 +39,12 @@ For system equation formulation, we ran the heater at maximum power while keepin
   <img src="https://github.com/luizpedrobt/FeedbackControlSystems_FinalProject/blob/main/images/planta.png" width="500">
 </div>
 
-The equation of the system in Laplace's domain is $`\frac{-0.17}{74s + 1}`$
+The equation of the system in Laplace's domain is $`G(s) = \frac{-0.17}{74s + 1}`$.
+
+## Firmware development
+
+The code is very simple except for the 10th-order digital filter used. However, we utilized the code provided by our instructors and merely adapted it to our needs. Additionally, it includes two active interrupts: one for signal sampling every 25 ms, and another for changing the setpoint via serial, by rewriting the weak Serial.event() function from the Arduino API. The sampling time of 25 ms was chosen based on the anti-aliasing filter on-board with the cut frequency of 19.8 Hz.
+
+## Conclusions
 
 In conclusion, the project is perfectly working with the arduino, but it'll be implemented in the STM32 lately, star this repository if you don't want do lose any updates!😘
