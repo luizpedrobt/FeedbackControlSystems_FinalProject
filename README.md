@@ -1,8 +1,13 @@
+
+### Hi there👋
+
 This project was developed as part of the Feedback Control Systems Lab course during my undergraduate studies. It was a collaborative effort, carried out in pairs (@github/fcarvalhop), with the objective of designing a digital PID controller to regulate temperature within a controlled environment.
 
 <div align="center">
   <img src="https://github.com/luizpedrobt/FeedbackControlSystems_FinalProject/blob/main/images/8ec62bac-992b-421e-b064-076684428e57.jpeg" width="500">
 </div>
+
+## Physical assembly
 
 The project entailed designing a PCB to integrate all the necessary circuits, which was accomplished using KiCad 7.0 software.
 
@@ -25,5 +30,9 @@ The project's concept is straightforward: the MCU measures the temperature, comp
 </div>
 
 Both the heating and cooling systems are controlled by the MCU using a BJT (bipolar junction transistor), although alternative drivers like MOSFETs can also be used. For heating, we used three 33-ohm resistors in parallel (10 W each), resulting in an equivalent resistance of 11 ohms. The project operates at a current close to 1.1 A, assuming a 12 V power supply. A LM7805 regulator was used to power both the Arduino board and other low-power circuits on the PCB.
+
+## Characterization and equation formulation
+
+For system equation formulation, we ran the heater at maximum power while keeping the cooler off to determine the upper heating limit of the plant. Then, upon reaching steady-state maximum accommodation, we activated the cooler at maximum to determine the lower heating limit of the plant. Using MATLAB, we determined the plant transfer function G(s), enabling us to design a suitable PID controller to meet all desired requirements.
 
 In conclusion, the project is perfectly working with the arduino, but it'll be implemented in the STM32 lately, star this repository if you don't want do lose any updates!😘
