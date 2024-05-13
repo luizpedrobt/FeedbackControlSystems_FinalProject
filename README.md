@@ -39,6 +39,6 @@ For system equation formulation, we ran the heater at maximum power while keepin
   <img src="https://github.com/luizpedrobt/FeedbackControlSystems_FinalProject/blob/main/images/planta.png" width="500">
 </div>
 
-The equation of the system in Laplace's domain is $`G(s) = -0.17/(74s + 1)`$
+The equation of the system in Laplace's domain is $`\frac{-0.17}{74s + 1}`$
 
 In conclusion, the project is perfectly working with the arduino, but it'll be implemented in the STM32 lately, star this repository if you don't want do lose any updates!😘
