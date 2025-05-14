@@ -1,0 +1,8 @@
+../app/app_sm.c:33:6:app_peripheral_init	8	static
+../app/app_sm.c:41:6:app_sm_init	16	static
+../app/app_sm.c:46:6:app_sm_run	64	static
+../app/app_sm.c:59:12:sm_reset_state	24	static
+../app/app_sm.c:66:12:sm_idle_state	24	static
+../app/app_sm.c:96:12:sm_heat_state	24	static
+../app/app_sm.c:134:12:sm_cool_state	24	static
+../app/app_sm.c:172:12:sm_control_state	16	static

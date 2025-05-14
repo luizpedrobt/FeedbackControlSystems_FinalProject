@@ -1,0 +1,3 @@
+../app/control.c:17:10:control_get_read_adc	1
+../app/control.c:22:7:control_get_filtered_temp	1
+../app/control.c:33:10:control_get_pid	3

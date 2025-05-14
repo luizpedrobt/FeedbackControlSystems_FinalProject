@@ -1,0 +1,8 @@
+../app/app_sm.c:33:6:app_peripheral_init	1
+../app/app_sm.c:41:6:app_sm_init	1
+../app/app_sm.c:46:6:app_sm_run	2
+../app/app_sm.c:59:12:sm_reset_state	1
+../app/app_sm.c:66:12:sm_idle_state	5
+../app/app_sm.c:96:12:sm_heat_state	6
+../app/app_sm.c:134:12:sm_cool_state	6
+../app/app_sm.c:172:12:sm_control_state	1

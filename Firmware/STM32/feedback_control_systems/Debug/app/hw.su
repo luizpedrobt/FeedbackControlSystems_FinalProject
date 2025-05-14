@@ -1,0 +1,9 @@
+../app/hw.c:16:6:hw_load_turn_on_heat	8	static
+../app/hw.c:21:6:hw_load_turn_off_heat	8	static
+../app/hw.c:26:6:hw_fan_turn_on	8	static
+../app/hw.c:32:6:hw_fun_turn_off	8	static
+../app/hw.c:38:6:hw_fun_speed_control	16	static
+../app/hw.c:44:6:hw_pwm_set_dc	24	static
+../app/hw.c:56:6:hw_turn_on_tim_interrup	8	static
+../app/hw.c:61:6:hw_turn_off_tim_interrup	8	static
+../app/hw.c:66:6:HAL_TIM_PeriodElapsedCallback	16	static
