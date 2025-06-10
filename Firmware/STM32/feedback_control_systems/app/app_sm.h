@@ -8,6 +8,8 @@
 #ifndef APP_SM_H_
 #define APP_SM_H_
 
+#include "control.h"
+
 #define XMACRO_STATE_LIST                                   \
 		X(0, STATE_RESET,   sm_reset_state  , "RESET"  )    \
 		X(1, STATE_IDLE,    sm_idle_state   , "IDLE"   )    \
@@ -25,6 +27,7 @@ typedef enum sm_state_e
 typedef struct sm_state_var_s
 {
 	sm_state_t state;
+	control_pid_t pid;
 }sm_state_var_t;
 
 typedef sm_state_t (*sm_func_t)(sm_state_var_t *st);
@@ -34,8 +37,9 @@ typedef struct sm_state_table_s
 	sm_func_t func;
 }sm_state_table_t;
 
+void app_run();
 void app_peripheral_init();
-void app_sm_init(sm_state_var_t *st);
+void app_sm_init();
 void app_sm_run(sm_state_var_t *st);
 
 sm_state_t sm_reset_state(sm_state_var_t *st);

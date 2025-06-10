@@ -26,5 +26,5 @@
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.o"
 "./app/app_sm.o"
 "./app/control.o"
-"./app/digital_filter.o"
+"./app/hal_uart.o"
 "./app/hw.o"

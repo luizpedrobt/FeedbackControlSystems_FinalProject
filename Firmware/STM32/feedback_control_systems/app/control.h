@@ -14,17 +14,18 @@
 typedef struct control_pid_s
 {
 	uint8_t setpoint;
-	uint8_t error;
-	float temp;
-	float kp;
-	float ki;
-	float kd;
+
+	float a1;
+	float a2;
+	float b0;
+	float b1;
+	float b2;
 }control_pid_t;
 
 uint32_t control_get_read_adc();
 
-float control_get_filtered_temp(digital_filter_t *f);
+uint8_t control_get_filtered_temp();
 
-uint16_t control_get_pid(float reference, float current_temp);
+uint16_t control_get_pid(control_pid_t pid, float reference, float current_temp);
 
 #endif /* CONTRO_H_ */

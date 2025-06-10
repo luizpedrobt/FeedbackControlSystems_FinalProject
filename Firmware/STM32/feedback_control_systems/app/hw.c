@@ -25,17 +25,17 @@ void hw_load_turn_off_heat(void)
 
 void hw_fan_turn_on(void)
 {
-	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-	HAL_GPIO_WritePin(PWM_FAN_GPIO_Port, PWM_FAN_Pin, GPIO_PIN_SET);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+	hw_fan_speed_control(999);
 }
 
-void hw_fun_turn_off(void)
+void hw_fan_turn_off(void)
 {
+	hw_fan_speed_control(0);
 	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-	HAL_GPIO_WritePin(PWM_FAN_GPIO_Port, PWM_FAN_Pin, GPIO_PIN_RESET);
 }
 
-void hw_fun_speed_control(uint16_t duty_cycle)
+void hw_fan_speed_control(uint16_t duty_cycle)
 {
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
 	hw_pwm_set_dc(duty_cycle);
@@ -44,8 +44,8 @@ void hw_fun_speed_control(uint16_t duty_cycle)
 void hw_pwm_set_dc(uint16_t duty_cycle)
 {
 	uint16_t aux = duty_cycle;
-	if(aux > 1000)
-		aux = 1000;
+	if(aux > 999)
+		aux = 999;
 
 	if(aux < 0)
 		aux = 0.;
@@ -61,12 +61,4 @@ void hw_turn_on_tim_interrup(void)
 void hw_turn_off_tim_interrup(void)
 {
 	HAL_TIM_Base_Stop_IT(&htim2);
-}
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
-{
-	if(htim == &htim2)
-	{
-
-	}
 }

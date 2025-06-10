@@ -1,3 +1,0 @@
-../app/digital_filter.c:26:6:digital_filter_init	32	static
-../app/digital_filter.c:38:6:digital_filter_put	24	static
-../app/digital_filter.c:45:8:digital_filter_get	32	static

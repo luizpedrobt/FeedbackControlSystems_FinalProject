@@ -7,19 +7,19 @@
 C_SRCS += \
 ../app/app_sm.c \
 ../app/control.c \
-../app/digital_filter.c \
+../app/hal_uart.c \
 ../app/hw.c 
 
 OBJS += \
 ./app/app_sm.o \
 ./app/control.o \
-./app/digital_filter.o \
+./app/hal_uart.o \
 ./app/hw.o 
 
 C_DEPS += \
 ./app/app_sm.d \
 ./app/control.d \
-./app/digital_filter.d \
+./app/hal_uart.d \
 ./app/hw.d 
 
 
@@ -30,7 +30,7 @@ app/%.o app/%.su app/%.cyclo: ../app/%.c app/subdir.mk
 clean: clean-app
 
 clean-app:
-	-$(RM) ./app/app_sm.cyclo ./app/app_sm.d ./app/app_sm.o ./app/app_sm.su ./app/control.cyclo ./app/control.d ./app/control.o ./app/control.su ./app/digital_filter.cyclo ./app/digital_filter.d ./app/digital_filter.o ./app/digital_filter.su ./app/hw.cyclo ./app/hw.d ./app/hw.o ./app/hw.su
+	-$(RM) ./app/app_sm.cyclo ./app/app_sm.d ./app/app_sm.o ./app/app_sm.su ./app/control.cyclo ./app/control.d ./app/control.o ./app/control.su ./app/hal_uart.cyclo ./app/hal_uart.d ./app/hal_uart.o ./app/hal_uart.su ./app/hw.cyclo ./app/hw.d ./app/hw.o ./app/hw.su
 
 .PHONY: clean-app
 
