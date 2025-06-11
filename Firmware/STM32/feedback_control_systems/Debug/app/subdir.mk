@@ -6,21 +6,27 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../app/app_sm.c \
+../app/checksum.c \
 ../app/control.c \
 ../app/hal_uart.c \
-../app/hw.c 
+../app/hw.c \
+../app/payload_composer.c 
 
 OBJS += \
 ./app/app_sm.o \
+./app/checksum.o \
 ./app/control.o \
 ./app/hal_uart.o \
-./app/hw.o 
+./app/hw.o \
+./app/payload_composer.o 
 
 C_DEPS += \
 ./app/app_sm.d \
+./app/checksum.d \
 ./app/control.d \
 ./app/hal_uart.d \
-./app/hw.d 
+./app/hw.d \
+./app/payload_composer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -30,7 +36,7 @@ app/%.o app/%.su app/%.cyclo: ../app/%.c app/subdir.mk
 clean: clean-app
 
 clean-app:
-	-$(RM) ./app/app_sm.cyclo ./app/app_sm.d ./app/app_sm.o ./app/app_sm.su ./app/control.cyclo ./app/control.d ./app/control.o ./app/control.su ./app/hal_uart.cyclo ./app/hal_uart.d ./app/hal_uart.o ./app/hal_uart.su ./app/hw.cyclo ./app/hw.d ./app/hw.o ./app/hw.su
+	-$(RM) ./app/app_sm.cyclo ./app/app_sm.d ./app/app_sm.o ./app/app_sm.su ./app/checksum.cyclo ./app/checksum.d ./app/checksum.o ./app/checksum.su ./app/control.cyclo ./app/control.d ./app/control.o ./app/control.su ./app/hal_uart.cyclo ./app/hal_uart.d ./app/hal_uart.o ./app/hal_uart.su ./app/hw.cyclo ./app/hw.d ./app/hw.o ./app/hw.su ./app/payload_composer.cyclo ./app/payload_composer.d ./app/payload_composer.o ./app/payload_composer.su
 
 .PHONY: clean-app
 

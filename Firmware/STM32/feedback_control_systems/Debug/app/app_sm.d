@@ -30,7 +30,7 @@ app/app_sm.o: ../app/app_sm.c ../app/control.h ../app/app_sm.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h ../app/hw.h \
- ../app/hal_uart.h
+ ../app/hal_uart.h ../app/payload_composer.h
 ../app/control.h:
 ../app/app_sm.h:
 ../Core/Inc/main.h:
@@ -67,3 +67,4 @@ app/app_sm.o: ../app/app_sm.c ../app/control.h ../app/app_sm.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../app/hw.h:
 ../app/hal_uart.h:
+../app/payload_composer.h:

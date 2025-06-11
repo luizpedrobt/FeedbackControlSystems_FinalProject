@@ -7,11 +7,13 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "control.h"
 #include "app_sm.h"
 #include "main.h"
 #include "hw.h"
 #include "hal_uart.h"
+#include "payload_composer.h"
 
 #define MAX_OPERATIONAL_TEMP 75
 #define AMBIENT_TEMP 25
@@ -45,20 +47,23 @@ sm_state_table_t sm_state_table[] =
 	#undef X
 };
 
-uint8_t temperature = 0;
+/* ----------------------------------- TRASNMIT PACKAGE ----------------------------------------- */
+
+uint8_t tx_buffer[TX_BUFF_LENGTH] = {0};
+uint8_t payload[5] = {0};
+
+/* ----------------------------------- RECEIVE PACKAGE ------------------------------------------ */
 
 uint8_t msg_raw[2] = {0};
 
+/* ----------------------------------- PROCCESS VARIABLES --------------------------------------- */
+uint8_t temperature = 0;
 uint16_t duty_cycle_cmd = 0;
-
-uint8_t tx_buffer[5] = {0};
-
 uint8_t fan_state = 0;
-
 uint8_t heat_state = 0;
-
 uint8_t peripheral_state = 0;
 
+/* ----------------------------------- FLAG FOR TRANSMISSIONS ----------------------------------- */
 bool transmit_flag = true;
 
 void send_state_via_uart(sm_state_var_t state, uint8_t temperature, uint16_t control, uint8_t periph_st)
@@ -67,13 +72,15 @@ void send_state_via_uart(sm_state_var_t state, uint8_t temperature, uint16_t con
 	{
 		transmit_flag = false;
 
-		tx_buffer[0] = (uint8_t)state.state;
-		tx_buffer[1] = temperature;
-		tx_buffer[2] = control/10;
-		tx_buffer[3] = state.pid.setpoint;
-		tx_buffer[4] = periph_st;
+		payload[0] = (uint8_t)state.state;
+		payload[1] = temperature;
+		payload[2] = control/10;
+		payload[3] = state.pid.setpoint;
+		payload[4] = periph_st;
 
-		hal_uart1_transmit_it(tx_buffer, 5);
+		compose_data(payload, tx_buffer);
+
+		hal_uart1_transmit_it(payload, TX_BUFF_LENGTH);
 	}
 }
 

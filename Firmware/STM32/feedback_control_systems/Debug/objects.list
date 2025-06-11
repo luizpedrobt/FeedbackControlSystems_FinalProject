@@ -25,6 +25,8 @@
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.o"
 "./app/app_sm.o"
+"./app/checksum.o"
 "./app/control.o"
 "./app/hal_uart.o"
 "./app/hw.o"
+"./app/payload_composer.o"
