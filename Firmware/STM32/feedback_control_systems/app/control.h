@@ -22,9 +22,9 @@ typedef struct control_pid_s
 	float b2;
 }control_pid_t;
 
-uint32_t control_get_read_adc();
+uint32_t control_get_read_adc(void);
 
-uint8_t control_get_filtered_temp();
+uint8_t control_get_filtered_temp(void);
 
 uint16_t control_get_pid(control_pid_t pid, float reference, float current_temp);
 

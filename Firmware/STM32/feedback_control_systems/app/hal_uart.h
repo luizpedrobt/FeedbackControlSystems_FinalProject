@@ -42,8 +42,8 @@ typedef struct hal_uart_configure_set_s
 	hal_uart_stop_bit_t stop_bits;
 }hal_uart_configure_set_t;
 
-void hal_uart1_init();
-void hal_uart1_deinit();
+void hal_uart1_init(void);
+void hal_uart1_deinit(void);
 
 void hal_uart1_configure(hal_uart_configure_set_t configure_set);
 

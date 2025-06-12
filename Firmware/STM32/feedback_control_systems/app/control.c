@@ -14,7 +14,7 @@ extern ADC_HandleTypeDef hadc1;
 float error, error_1, error_2;
 float control, control_1, control_2;
 
-uint32_t control_get_read_adc()
+uint32_t control_get_read_adc(void)
 {
 	HAL_ADC_Start(&hadc1);
 	HAL_ADC_PollForConversion(&hadc1, 100);
@@ -24,7 +24,7 @@ uint32_t control_get_read_adc()
 	return(adc_raw);
 }
 
-uint8_t control_get_filtered_temp()
+uint8_t control_get_filtered_temp(void)
 {
 	uint32_t adc_reading = control_get_read_adc();
 

@@ -40,9 +40,11 @@ sm_state_var_t st =
 	}
 };
 
+/* ---------------------------------- STATE FUNCTIONS ------------------------------------------- */
+
 sm_state_table_t sm_state_table[] =
 {
-	#define X(IDX, STATE, FUNC, NAME) FUNC,
+	#define X(IDX, STATE, FUNC, NAME) { FUNC },
 		XMACRO_STATE_LIST
 	#undef X
 };
@@ -64,7 +66,7 @@ uint8_t heat_state = 0;
 uint8_t peripheral_state = 0;
 
 /* ----------------------------------- FLAG FOR TRANSMISSIONS ----------------------------------- */
-bool transmit_flag = true;
+volatile bool transmit_flag = true;
 
 void send_state_via_uart(sm_state_var_t state, uint8_t temperature, uint16_t control, uint8_t periph_st)
 {
@@ -84,7 +86,7 @@ void send_state_via_uart(sm_state_var_t state, uint8_t temperature, uint16_t con
 	}
 }
 
-void app_peripheral_init()
+void app_peripheral_init(void)
 {
 	HAL_ADC_Init(&hadc1);
 
@@ -140,11 +142,11 @@ void unpack_frame(sm_state_var_t *state)
 
 }
 
-void app_sm_init()
+void app_sm_init(void)
 {
 	app_peripheral_init();
 
-	HAL_UART_Receive_IT(&huart1, msg_raw, 2);
+	hal_uart1_receive_it(msg_raw, 2);
 }
 
 void app_sm_run(sm_state_var_t *st)
@@ -152,7 +154,7 @@ void app_sm_run(sm_state_var_t *st)
 	st->state = sm_state_table[st->state].func(st);
 }
 
-void app_run()
+void app_run(void)
 {
 	app_sm_run(&st);
 }
@@ -256,32 +258,18 @@ sm_state_t sm_control_state(sm_state_var_t *st)
 	return next_state;
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+void uart1_rx_cbk(void)
 {
-	if(huart == &huart1)
-	{
-		unpack_frame(&st);
-		HAL_UART_Receive_IT(&huart1, msg_raw, 2);
-	}
+	unpack_frame(&st);
+	hal_uart1_receive_it(msg_raw, 2);
 }
 
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+void uart1_tx_cbk(void)
 {
-	if(huart == &huart1)
-	{
-		transmit_flag = true;
-	}
+	transmit_flag = true;
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+void tim3_cbk(void)
 {
-	if(htim == &htim2)
-	{
-		app_run();
-	}
-
-	if(htim == &htim3)
-	{
-		send_state_via_uart(st, temperature, duty_cycle_cmd, peripheral_state);
-	}
+	send_state_via_uart(st, temperature, duty_cycle_cmd, peripheral_state);
 }

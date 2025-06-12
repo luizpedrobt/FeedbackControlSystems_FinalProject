@@ -11,11 +11,11 @@
 
 extern UART_HandleTypeDef huart1;
 
-void hal_uart1_init()
+void hal_uart1_init(void)
 {
 	HAL_UART_Init(&huart1);
 }
-void hal_uart1_deinit()
+void hal_uart1_deinit(void)
 {
 	HAL_UART_DeInit(&huart1);
 }

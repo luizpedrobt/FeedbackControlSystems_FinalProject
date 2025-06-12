@@ -6,11 +6,13 @@
  */
 #include <stdint.h>
 #include "main.h"
+#include "app_sm.h"
 #include "hw.h"
 
 extern ADC_HandleTypeDef hadc1;
 extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim3;
 extern UART_HandleTypeDef huart1;
 
 void hw_load_turn_on_heat(void)
@@ -61,4 +63,33 @@ void hw_turn_on_tim_interrup(void)
 void hw_turn_off_tim_interrup(void)
 {
 	HAL_TIM_Base_Stop_IT(&htim2);
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart == &huart1)
+	{
+		uart1_rx_cbk();
+	}
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart == &huart1)
+	{
+		uart1_tx_cbk();
+	}
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+{
+	if(htim == &htim2)
+	{
+		app_run();
+	}
+
+	if(htim == &htim3)
+	{
+		tim3_cbk();
+	}
 }

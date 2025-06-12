@@ -37,10 +37,14 @@ typedef struct sm_state_table_s
 	sm_func_t func;
 }sm_state_table_t;
 
-void app_run();
-void app_peripheral_init();
-void app_sm_init();
+void app_run(void);
+void app_peripheral_init(void);
+void app_sm_init(void);
 void app_sm_run(sm_state_var_t *st);
+
+void uart1_rx_cbk(void);
+void uart1_tx_cbk(void);
+void tim3_cbk(void);
 
 sm_state_t sm_reset_state(sm_state_var_t *st);
 sm_state_t sm_idle_state(sm_state_var_t *st);
